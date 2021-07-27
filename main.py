@@ -6,7 +6,7 @@ from sqlalchemy import UniqueConstraint
 app = Flask(__name__)
 
 app.config['SQLAlchemy_DATABASE_URI'] = 'mysql://root:root@localhost:33067/main'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 CORS(app)
 
 db = SQLAlchemy(app)
