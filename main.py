@@ -2,12 +2,11 @@ from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
+from sqlalchemy.dialects import mysql
 
 app = Flask(__name__)
-
-app.config['SQLAlchemy_DATABASE_URI'] = 'mysql://root:root@localhost:33067/main'
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLAlchemy_DATABASE_URI'] = 'mysql:///root:root@localhost:33067/main'
 CORS(app)
 
 db = SQLAlchemy(app)
@@ -28,8 +27,10 @@ class ProductUser(db.Model):
 
 
 @app.route('/')
-def home():
-    return 'This is my take home exam'
+class Greeter:
+    def __init__(self):
+        self.message = 'Hello world, This is my take home assignment!'
+        # print self.message
 
 
 if __name__ == '__main__':

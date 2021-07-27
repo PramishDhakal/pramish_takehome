@@ -1,9 +1,13 @@
-import pytest
-from main import app
+import unittest
+
+from main import Greeter
 
 
-def test_hello():
-    response = app.test_client().get('/')
+class MyTestCase(unittest.TestCase):
+    def test_default_greeting_set(self):
+        greeter = Greeter()
+        self.assertEqual(greeter.message, 'Hello world, This is my take home assignment!')
 
-    assert response.status_code == 200
-    assert response.data == b'Hello, World!'
+
+if __name__ == '__main__':
+    unittest.main()
